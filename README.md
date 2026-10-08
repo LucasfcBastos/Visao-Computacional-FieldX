@@ -60,16 +60,239 @@ Utilizado para construção da interface gráfica da aplicação.
 
 ---
 
-# Estrutura do projeto
+## Instalação
 
-A estrutura esperada do projeto é:
+O sistema utiliza Python e algumas bibliotecas para captura e processamento de imagens.
+
+### Requisitos
+
+- Python 3.10 ou superior
+- Webcam ou câmera conectada ao computador
+- Git (opcional)
+
+As bibliotecas utilizadas são:
+
+- OpenCV
+- NumPy
+- Pillow
+- Tkinter
+
+---
+
+### Linux
+
+#### 1. Verifique o Python
+
+```bash
+python3 --version
+```
+
+Caso o Python não esteja instalado:
+
+```bash
+sudo apt update
+sudo apt install python3 python3-pip python3-tk
+```
+
+#### 2. Instale as bibliotecas
+
+```bash
+pip3 install opencv-python numpy pillow
+```
+
+#### 3. Execute o sistema
+
+Entre na pasta do projeto:
+
+```bash
+cd caminho/para/o/projeto
+```
+
+Depois execute:
+
+```bash
+python3 main.py
+```
+
+#### 4. Configuração da câmera
+
+No Linux, as câmeras normalmente aparecem como dispositivos `/dev/videoX`.
+
+Exemplo:
 
 ```text
-FieldX/
-│
-├── main.py
-│
-├── icon/
-│   └── Field_X_AX.png
-│
-└── README.md
+/dev/video0
+/dev/video1
+/dev/video2
+```
+
+Para verificar as câmeras disponíveis:
+
+```bash
+v4l2-ctl --list-devices
+```
+
+Caso o comando não esteja disponível:
+
+```bash
+sudo apt install v4l-utils
+```
+
+---
+
+### macOS
+
+#### 1. Verifique o Python
+
+```bash
+python3 --version
+```
+
+Caso não tenha Python instalado, ele pode ser instalado pelo Homebrew:
+
+```bash
+brew install python
+```
+
+#### 2. Instale as bibliotecas
+
+```bash
+python3 -m pip install opencv-python numpy pillow
+```
+
+#### 3. Execute o sistema
+
+Entre na pasta do projeto:
+
+```bash
+cd caminho/para/o/projeto
+```
+
+Execute:
+
+```bash
+python3 main.py
+```
+
+> **Observação:** o código atual utiliza um caminho de câmera específico do Linux (`/dev/video0`). Para utilizar o sistema no macOS, será necessário adaptar a configuração da câmera no código.
+
+---
+
+### Windows
+
+#### 1. Instale o Python
+
+Baixe e instale o Python pelo site oficial:
+
+https://www.python.org/
+
+Durante a instalação, marque a opção:
+
+```text
+Add Python to PATH
+```
+
+#### 2. Verifique a instalação
+
+Abra o PowerShell ou CMD:
+
+```powershell
+python --version
+```
+
+#### 3. Instale as bibliotecas
+
+```powershell
+python -m pip install opencv-python numpy pillow
+```
+
+#### 4. Execute o sistema
+
+Entre na pasta do projeto:
+
+```powershell
+cd caminho\para\o\projeto
+```
+
+Execute:
+
+```powershell
+python main.py
+```
+
+> **Observação:** o código atual utiliza um caminho de câmera específico do Linux (`/dev/video0`). Para utilizar o sistema no Windows, será necessário adaptar a configuração da câmera no código.
+
+---
+
+## Execução rápida
+
+Depois de instalar as dependências, basta executar:
+
+### Linux
+
+```bash
+python3 main.py
+```
+
+### macOS
+
+```bash
+python3 main.py
+```
+
+### Windows
+
+```powershell
+python main.py
+```
+
+---
+
+## Solução de problemas
+
+### A câmera não aparece
+
+Verifique se a câmera está conectada e reconhecida pelo sistema.
+
+No Linux:
+
+```bash
+v4l2-ctl --list-devices
+```
+
+Também verifique se o caminho configurado no código corresponde à câmera desejada.
+
+### Erro ao instalar bibliotecas
+
+Tente atualizar o `pip`:
+
+```bash
+python3 -m pip install --upgrade pip
+```
+
+Depois instale novamente:
+
+```bash
+python3 -m pip install opencv-python numpy pillow
+```
+
+No Windows:
+
+```powershell
+python -m pip install --upgrade pip
+python -m pip install opencv-python numpy pillow
+```
+
+### Tkinter não encontrado no Linux
+
+Instale o pacote:
+
+```bash
+sudo apt install python3-tk
+```
+
+Depois execute novamente:
+
+```bash
+python3 main.py
+```
